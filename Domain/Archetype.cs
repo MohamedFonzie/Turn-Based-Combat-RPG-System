@@ -17,7 +17,8 @@ namespace Domain
             BaseHP = baseHP;
         }
         // Static properties for predefined archetypes
-        public static Archetype Warrior { get; } = new Archetype("Warrior", 5, 50);
-        public static Archetype Ranger { get; } = new Archetype("Ranger", 3, 30);
+        public static Archetype Warrior { get; } = new Archetype("Warrior", 3, 50);
+        public static Archetype Ranger { get; } = new Archetype("Ranger", 5, 30);
+        public static Archetype Enemy { get; } = new Archetype("Enemy", 2, 30);
     }
 }
