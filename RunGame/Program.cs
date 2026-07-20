@@ -9,23 +9,23 @@ namespace RunGame
             Console.Write("1. Warrior (Low dmg, Hight HP)\n2. Ranger (High dmg, Low HP)\nChoose your class: ");
             var ClassSelection = Convert.ToInt32(Console.ReadLine());
 
-            var player = CreateWarriorCharacter(ClassSelection);
+            var player = CreatePlayer(ClassSelection);
             Console.WriteLine("\n");
 
-            var enemy = CreateRangerCharacter();
+            var enemy = CreateEnemy();
             Console.WriteLine("\n");
 
             var battle = new Battle(player, enemy);
             battle.StartBattle();
         }
 
-        public static Character CreateWarriorCharacter(int ClassSelection)
+        public static Player CreatePlayer(int ClassSelection)
         {
             switch (ClassSelection)
             {
                 case 1:
                     var warrior = Archetype.Warrior;
-                    var character = new Character(warrior, "Thor");
+                    var character = new Player(warrior, "Thor");
                     Console.WriteLine($"Character: {character.Name}");
                     Console.WriteLine($"Archetype: {warrior.Name}");
                     Console.WriteLine($"Total Damage: {character.TotalDamage}");
@@ -33,7 +33,7 @@ namespace RunGame
                     return character;
                 case 2:
                     var ranger = Archetype.Ranger;
-                    var character2 = new Character(ranger, "Robin");
+                    var character2 = new Player(ranger, "Robin");
                     Console.WriteLine($"Character: {character2.Name}");
                     Console.WriteLine($"Archetype: {ranger.Name}");
                     Console.WriteLine($"Total Damage: {character2.TotalDamage}");
@@ -44,17 +44,15 @@ namespace RunGame
             }
         }
 
-        public static Character CreateRangerCharacter()
+        public static Enemy CreateEnemy()
         {
-            var enemy = Archetype.Enemy;
-            var character = new Character(enemy, "Dragon");
+            Enemy enemy = new Enemy("Dragon");
 
-            Console.WriteLine($"Character: {character.Name}");
-            Console.WriteLine($"Archetype: {enemy.Name}");
-            Console.WriteLine($"Total Damage: {character.TotalDamage}");
-            Console.WriteLine($"Max HP: {character.MaxHP}");
+            Console.WriteLine($"Enemy: {enemy.Name}");
+            Console.WriteLine($"Total Damage: {enemy.TotalDamage}");
+            Console.WriteLine($"Max HP: {enemy.MaxHP}");
 
-            return character;
+            return enemy;
         }
     }
 }

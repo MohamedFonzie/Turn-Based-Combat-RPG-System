@@ -2,13 +2,13 @@
 {
     public class Battle
     {
-        private Character player;
-        private Character enemy;
+        private Player _player;
+        private Enemy _enemy;
 
-        public Battle(Character character1, Character character2)
+        public Battle(Player player, Enemy enemy)
         {
-            player = character1;
-            enemy = character2;
+            _player = player;
+            _enemy = enemy;
         }
 
         public void StartBattle()
@@ -17,25 +17,25 @@
 
             while (true)
             {
-                enemy.TakeDamage(player.TotalDamage);
-                Console.WriteLine($"{player.Name} attacks {enemy.Name} for {player.TotalDamage} damage. {enemy.Name}'s HP is now {enemy.CurrentHP}");
+                _enemy.TakeDamage(_player.TotalDamage);
+                Console.WriteLine($"{_player.Name} attacks {_enemy.Name} for {_player.TotalDamage} damage. {_enemy.Name}'s HP is now {_enemy.CurrentHP}");
 
-                if (enemy.CurrentHP == 0)
+                if (_enemy.CurrentHP == 0)
                 {
-                    Console.WriteLine($"{enemy.Name} has been defeated!");
-                    player.RestoreFullHP();
-                    enemy.RestoreFullHP();
+                    Console.WriteLine($"{_enemy.Name} has been defeated!");
+                    _player.RestoreFullHP();
+                    _enemy.RestoreFullHP();
                     break;
                 }
 
-                player.TakeDamage(enemy.TotalDamage);
-                Console.WriteLine($"{enemy.Name} attacks {player.Name} for {enemy.TotalDamage} damage. {player.Name}'s HP is now {player.CurrentHP}");
+                _player.TakeDamage(_enemy.TotalDamage);
+                Console.WriteLine($"{_enemy.Name} attacks {_player.Name} for {_enemy.TotalDamage} damage. {_player.Name}'s HP is now {_player.CurrentHP}");
 
-                if (player.CurrentHP == 0)
+                if (_player.CurrentHP == 0)
                 {
-                    Console.WriteLine($"{player.Name} has been defeated!");
-                    player.RestoreFullHP();
-                    enemy.RestoreFullHP();
+                    Console.WriteLine($"{_player.Name} has been defeated!");
+                    _player.RestoreFullHP();
+                    _enemy.RestoreFullHP();
                     break;
                 }
                 turns++;
